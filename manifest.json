@@ -1,0 +1,13 @@
+{
+ "manifest_version": 2,
+ "name": "User_ng",
+ "description": "ZaifチャットのNGするやつ",
+ "version": "1.0",
+ "content_scripts": [
+ {
+    "matches": ["https://zaif.jp/*"],
+    "js": ["jquery-3.2.1.min.js","script.js"],
+    "run_at": "document_end"
+ }
+ ]
+}
