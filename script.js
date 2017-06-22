@@ -1,12 +1,15 @@
-let data = [];
+//読み込んだ時にデフォルトで表示されるチャットの数を検証するためのcount
 let count = 0;
 
 $(function(){
-    //
-  $(".chat-btn").append("<button class='ng_btn'>NG追加</button>");
-  $(".chat-btn").append("<button class='ng_view'>ON/OFF</button>");
+  //json追加は上書きになってしまうのでjsonを読み込み追加
+  let object = localStorage.getItem('json') ? JSON.parse(localStorage.getItem('json')) : { data: []};
 
+  $(".chat-btn").append("<button class='ng_btn'>NG追加</button>");
+
+  //NG追加ボタンを押したら作動
   $(".ng_btn").click(function(){
+
     let ng_user_name = window.prompt("NGユーザーに追加するユーザーの名前を入力してください");
     let ng_user_id = window.prompt("NGユーザーに追加するIDを入力してください");
     //ユーザーIDは必ず40文字
@@ -15,21 +18,18 @@ $(function(){
     }else{
       let kakunin = confirm("名前:"+ng_user_name+"\nユーザーID:"+ng_user_id+"\nをNGユーザーに追加しますか？");
       if(kakunin == true){
-        data.push({name:ng_user_name,user_id:ng_user_id});
+        object.data.push({name:ng_user_name,user_id:ng_user_id});
         //json形式でdataに送る
-        localStorage.setItem('json', JSON.stringify(data));
+        localStorage.setItem('json', JSON.stringify(object));
+
+        //NGユーザー設定を即反映させてconsoleにログを吐く
+        $(`[id^=${ng_user_id}]`).hide();
+        console.log("現在のNGユーザー数:"+localStorage.length);
+
         alert("名前:"+ng_user_name+"\nユーザーID:"+ng_user_id+"を追加しました");
       }else{
         alert("キャンセルしました");
       }
-    }
-  }),
-  //コピペコードごめんなさい><
-  $(".ng_view").click(function(){
-    var data = localStorage.getItem('json');
-    data = JSON.parse(data);
-    for (var i = 0; i < data.length; i++) {
-        console.log(data[i].user_id);
     }
   }),
   //チャットボックスが変更されたら実行
@@ -41,20 +41,28 @@ $(function(){
         //重スギィ！
         console.log(count);
       }else if(count == 80){
-        var data = localStorage.getItem('json');
+        console.log("NGユーザーに追加している数:"+localStorage.length);
+
+        let data = localStorage.getItem('json');
         data = JSON.parse(data);
-        for (var i = 0; i < data.length; i++) {
+        for (let i = 0; i < object.data.length; i++) {
           //非表示リストdataに入ってるユーザーを非表示
-          $(`[id^=${data[i].user_id}]`).hide();
+          $(`[id^=${object.data[i].user_id}]`).hide();
         }
-      }else{
-        var data = localStorage.getItem('json');
+        count++;
+        console.log("正常に動いてます");
+
+      }else if(localStorage.length != 0){
+
+        console.log("発動してる");
+
+        let data = localStorage.getItem('json');
         data = JSON.parse(data);
-        for (var i = 0; i < data.length; i++) {
+        for (let i = 0; i < object.data.length; i++) {
           //非表示リストdataに入ってるユーザーを非表示
-          $(`[id^=${data[i].user_id}]`).hide();
+          $(`[id^=${object.data[i].user_id}]`).hide();
           //監視用にコンソールで確認できるようにする
-          console.log(`名前:${data[i].name} ID:${data[i].user_id}が発言`);
+          console.log(`名前:${object.data[i].name} ID:${object.data[i].user_id}が発言`);
         }
       }
     })

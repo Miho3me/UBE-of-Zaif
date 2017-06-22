@@ -1,13 +1,12 @@
 {
  "manifest_version": 2,
- "name": "User_ng",
- "description": "ZaifチャットのNGするやつ",
+ "name": "Zaif user block",
+ "description": "Zaifチャットの特定のIDを指定して非表示にする非常~↑に便利な拡張機能だよ!",
  "version": "1.0",
  "content_scripts": [
  {
     "matches": ["https://zaif.jp/*"],
     "js": ["jquery-3.2.1.min.js","script.js"],
     "run_at": "document_end"
- }
- ]
+ }]
 }
