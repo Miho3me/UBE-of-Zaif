@@ -16,7 +16,8 @@ $(function(){
     if(ng_user_id.length != 40){
       alert("ユーザーIDが間違っているかもしれません");
     }else{
-      let kakunin = confirm("名前:"+ng_user_name+"\nユーザーID:"+ng_user_id+"\nをNGユーザーに追加しますか？");
+      //let kakunin = confirm("名前:"+ng_user_name+"\nユーザーID:"+ng_user_id+"\nをNGユーザーに追加しますか？");
+      let kakunin = confirm(`名前:${ng_user_name}\nユーザーID:${ng_user_id}\nをNGユーザーに追加しますか？`);
       if(kakunin == true){
         object.data.push({name:ng_user_name,user_id:ng_user_id});
         //json形式でdataに送る
@@ -24,7 +25,7 @@ $(function(){
 
         //NGユーザー設定を即反映させてconsoleにログを吐く
         $(`[id^=${ng_user_id}]`).hide();
-        console.log("現在のNGユーザー数:"+localStorage.length);
+        console.log(`現在のNGユーザー数:${object.data.length}`);
 
         alert("名前:"+ng_user_name+"\nユーザーID:"+ng_user_id+"を追加しました");
       }else{
@@ -41,7 +42,7 @@ $(function(){
         //重スギィ！
         console.log(count);
       }else if(count == 80){
-        console.log("NGユーザーに追加している数:"+localStorage.length);
+        console.log(`NGユーザーに追加している数:${object.data.length}`);
 
         let data = localStorage.getItem('json');
         data = JSON.parse(data);
