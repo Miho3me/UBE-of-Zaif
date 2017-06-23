@@ -16,7 +16,7 @@ $(function(){
     if(ng_user_id.length != 40){
       alert("ユーザーIDが間違っているかもしれません");
     }else{
-      //let kakunin = confirm("名前:"+ng_user_name+"\nユーザーID:"+ng_user_id+"\nをNGユーザーに追加しますか？");
+
       let kakunin = confirm(`名前:${ng_user_name}\nユーザーID:${ng_user_id}\nをNGユーザーに追加しますか？`);
       if(kakunin == true){
         object.data.push({name:ng_user_name,user_id:ng_user_id});
@@ -24,10 +24,10 @@ $(function(){
         localStorage.setItem('json', JSON.stringify(object));
 
         //NGユーザー設定を即反映させてconsoleにログを吐く
-        $(`[id^=${ng_user_id}]`).hide();
+        $(`[id^=${ng_user_id}]`).remove();
         console.log(`現在のNGユーザー数:${object.data.length}`);
 
-        alert("名前:"+ng_user_name+"\nユーザーID:"+ng_user_id+"を追加しました");
+        alert(`名前:${ng_user_name}\nユーザーID:${ng_user_id}を追加しました`);
       }else{
         alert("キャンセルしました");
       }
@@ -47,21 +47,23 @@ $(function(){
         let data = localStorage.getItem('json');
         data = JSON.parse(data);
         for (let i = 0; i < object.data.length; i++) {
+
           //非表示リストdataに入ってるユーザーを非表示
-          $(`[id^=${object.data[i].user_id}]`).hide();
+          $(`[id^=${object.data[i].user_id}]`).remove();
         }
         count++;
         console.log("正常に動いてます");
 
-      }else if(localStorage.length != 0){
+      }
+      let data = localStorage.getItem('json');
+      data = JSON.parse(data);
+      for (let i = 0; i < object.data.length; i++) {
+        //エラーログ回避のためNGユーザー数が1人以上であること・cc_areaに存在するNGユーザーが非表示ではない時に発動
+        if(localStorage.length != 0 && $(`[id^=${object.data[i].user_id}]`).length){
 
-        console.log("発動してる");
-
-        let data = localStorage.getItem('json');
-        data = JSON.parse(data);
-        for (let i = 0; i < object.data.length; i++) {
           //非表示リストdataに入ってるユーザーを非表示
-          $(`[id^=${object.data[i].user_id}]`).hide();
+          $(`[id^=${object.data[i].user_id}]`).remove();
+          console.log("NG発動");
           //監視用にコンソールで確認できるようにする
           console.log(`名前:${object.data[i].name} ID:${object.data[i].user_id}が発言`);
         }
