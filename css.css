@@ -1,0 +1,8 @@
+body{
+  width:600px;
+  min-width:400px;
+  overflow-x: hidden;
+}
+#sub-title,#edit-mode,#delete-mode,#btn-space,#popup-message{
+  display: none;
+}
