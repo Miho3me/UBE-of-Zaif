@@ -9,6 +9,9 @@ $(function(){
     $("#sub-title").show();
     $("#edit-mode").show();
     $("#btn-space").show();
+    if(localStorage.length == 0){
+      $("#not-found").show();
+    }
   }),
   $(document).on("click",".delete-button",function(){
     let remove_us = $(this).parent().attr("id");

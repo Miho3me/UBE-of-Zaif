@@ -1,8 +1,7 @@
 body{
-  width:600px;
-  min-width:400px;
+  width:450px;
   overflow-x: hidden;
 }
-#sub-title,#edit-mode,#delete-mode,#btn-space,#popup-message{
+#sub-title,#edit-mode,#delete-mode,#btn-space,#popup-message,#not-found{
   display: none;
 }
