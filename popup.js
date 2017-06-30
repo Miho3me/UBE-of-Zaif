@@ -1,5 +1,11 @@
 let counter = 0;
+
 $(function(){
+  chrome.storage.local.get(["notification"],function(value){
+    if(value.notification == "on"){
+      $(".chat-notification").prop("checked",true);
+    }
+  }),
   $("#edit-btn").click(function(){
     $("#multi-btn").hide();
     for(key in localStorage){
@@ -23,19 +29,22 @@ $(function(){
   $("#his-btn").click(function(){
     $("#multi-btn").hide();
     $("#update-history").show();
-
   }),
   $("#add-btn").click(function(){
     $("#multi-btn").hide();
     $("#add-mode").show();
 
-  })/*,
+  }),
   //各種設定
   $(document).ready(function(){
-    $(".chat-notification").change(function(){
+    $(".chat-notification").click(function(){
       if($(this).is(":checked")){
-        chrome.runtime.sendMessage({method: "alert"});
+        chrome.storage.local.set({'notification': "on"},function(){
+        })
+      }else{
+        chrome.storage.local.set({'notification': "off"},function(){
+        })
       }
     })
-  })*/
+  })
 })

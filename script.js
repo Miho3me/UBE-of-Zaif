@@ -2,10 +2,13 @@
 let count = 1;
 //無限ループ回避用に変数を使う
 let processing = "off";
+//
+let notification_audio = new Audio("https://github.com/Miho3me/audio-library/raw/master/zaif_notification.wav")
 
 $(function(){
   $("#cc_area").on("DOMNodeInserted",function(){
     if(processing == "off"){
+
       if(count <= 79){
 
         count++;
@@ -39,9 +42,18 @@ $(function(){
             }
           }
         })
-        processing = "on";
-        $("#cc_area .media-heading").last().append("<button class='user-ng-button'>NG</button>");
-        processing = "off";
+        if(!($("#cc_area .media-heading").last().find(".user-ng-button").length)){
+          processing = "on";
+          $("#cc_area .media-heading").last().append("<button class='user-ng-button'>NG</button>");
+          processing = "off";
+          chrome.storage.local.get(["notification"],function(value){
+            if(value.notification == "on"){
+              notification_audio.pause();
+              notification_audio.currentTime = 0;
+              notification_audio.play();
+            }
+          })
+        }
       }
     }
   }),

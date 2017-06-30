@@ -2,6 +2,6 @@ body{
   width:450px;
   overflow-x: hidden;
 }
-#sub-title,#edtmd,#edit-mode,#delete-mode,#update-history,#btn-space,#popup-message,#not-found{
+#sub-title,#edtmd,#edit-mode,#add-mode,#delete-mode,#update-history,#btn-space,#popup-message,#not-found{
   display: none;
 }
