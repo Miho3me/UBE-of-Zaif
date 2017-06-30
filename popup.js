@@ -1,12 +1,12 @@
 let counter = 0;
 $(function(){
   $("#edit-btn").click(function(){
-    $("#edit-btn").hide();
+    $("#multi-btn").hide();
     for(key in localStorage){
       $("#edit-mode").append(`<div id=${key}>名前:${key} ユーザーID:${localStorage[key]}<button class=delete-button>削除</button></div>`);
       counter++;
     }
-    $("#sub-title").show();
+    $("#edtmd").show();
     $("#edit-mode").show();
     $("#btn-space").show();
     if(localStorage.length == 0){
@@ -18,5 +18,17 @@ $(function(){
     localStorage.removeItem(`${remove_us}`)
     $(this).parent().remove();
     $("#popup-message").fadeIn();
-  })
+  }),
+  $("#add-btn").click(function(){
+    $("#multi-btn").hide();
+    $("#add-mode").show();
+  })/*,
+  //各種設定
+  $(document).ready(function(){
+    $(".chat-notification").change(function(){
+      if($(this).is(":checked")){
+        chrome.runtime.sendMessage({method: "alert"});
+      }
+    })
+  })*/
 })
