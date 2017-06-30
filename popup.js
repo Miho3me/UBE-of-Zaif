@@ -18,10 +18,17 @@ $(function(){
     localStorage.removeItem(`${remove_us}`)
     $(this).parent().remove();
     $("#popup-message").fadeIn();
+
+  }),
+  $("#his-btn").click(function(){
+    $("#multi-btn").hide();
+    $("#update-history").show();
+
   }),
   $("#add-btn").click(function(){
     $("#multi-btn").hide();
     $("#add-mode").show();
+
   })/*,
   //各種設定
   $(document).ready(function(){
