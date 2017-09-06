@@ -34,7 +34,7 @@ $(function(){
   //NGリスト横の削除ボタンで発動
   $(document).on("click",".delete-button",function(){
     let remove_us = $(this).parent().attr("id");
-    localStorage.removeItem(`${remove_us}`)
+    localStorage.removeItem(`${remove_us}`);
     $(this).parent().remove();
     $("#popup-message").fadeIn();
   }),
