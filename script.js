@@ -2,7 +2,7 @@
 let count = 1;
 //無限ループ回避用に変数を使う
 let processing = "off";
-//
+//通知音
 let notification_audio = new Audio("https://github.com/Miho3me/audio-library/raw/master/zaif_notification.wav")
 
 $(function(){
@@ -10,9 +10,7 @@ $(function(){
     if(processing == "off"){
 
       if(count <= 79){
-
         count++;
-
       }else if(count == 80){
 
         chrome.runtime.sendMessage({method: "getLength"}, function(response){
@@ -61,9 +59,9 @@ $(function(){
 
     let ng_id = $(this).parent().find("span").attr("title");
     let ng_user_name = window.prompt("NGユーザーに追加するユーザーの名前を入力してください");
-    if(ng_user_name != null){
+    if(ng_user_name != ""){
       let ng_user_id = window.prompt("NGユーザーに追加するIDを入力してください", ng_id);
-      if(ng_user_id != null || ng_user_id.length == 40){
+      if(ng_user_id != "" || ng_user_id.length == 40){
         let confirm_var = confirm(`名前:${ng_user_name}\nユーザーID:${ng_user_id}\nをNGユーザーに追加しますか？`);
         if(confirm_var == true){
           chrome.runtime.sendMessage({method: "setItem",key:ng_user_name ,value:ng_user_id });
@@ -75,6 +73,9 @@ $(function(){
           })
         }
       }
+    //ユーザー名が空の場合
+    }else{
+      alert("ユーザー名が空です");
     }
   })
 })

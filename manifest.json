@@ -2,7 +2,7 @@
  "manifest_version": 2,
  "name": "Zaif user blocker",
  "description": "Zaifチャットの特定のIDを指定して投稿を非表示にする拡張機能",
- "version": "1.1.6",
+ "version": "1.1.666666666666",
  "icons":{
    "16":"icons/icon16.png",
    "48":"icons/icon48.png"
