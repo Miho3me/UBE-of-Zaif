@@ -6,13 +6,16 @@ let processing = "off";
 let notification_audio = new Audio("https://github.com/Miho3me/audio-library/raw/master/zaif_notification.wav");
 
 $(function(){
+  if($.cookie("alert_114514") != undefined){
+    $.removeCookie("alert_114514");
+  }
   //アップデート通知
-  $("#header_message").append(`<div id="alert_114514" class="alert alert-success alert-dismissible unread-message" role="alert" style=""><button type="button" class="close notifi-hide" data-dismiss="alert" aria-label="Close"><span update-notification="true" class="notifi-hide dombutton">×</span></button><div class="pc-alert">ZaifUserBlockerのアップデート通知は現バージョンからこのような形で通知を行います。<br>よろしくおねがいします。<br>あ、あと1.1.7のリリースを行いましたが、新機能追加ではないです。</div></div>`);
-  if($.cookie('alert_114514') === 'closed'){
-      $('#alert_114514').hide();
+  $("#header_message").append(`<div id="alert_1_1_8" class="alert alert-success alert-dismissible unread-message" role="alert" style=""><button type="button" class="close notifi-hide" data-dismiss="alert" aria-label="Close"><span update-notification="true" class="notifi-hide dombutton">×</span></button><div class="pc-alert">バグ修正のため、1.1.8をリリースしました。あと、<a href="https://chrome.google.com/webstore/detail/zaif-tweaker/ojmmmmbolgbdhhkkdgdclgbekopjlgec" target="_blank">Zaif-Tweakerをリリース</a>しました。(クリックで飛べます)<br>現在はチャット丸ごと非表示・時価総額非表示機能のみですがこれから機能が充実していく予定です。ご期待ください。</div></div>`);
+  if($.cookie('alert_1_1_8') === 'closed'){
+      $('#alert_1_1_8').hide();
       console.log("hide")
   } else {
-      $('#alert_114514').show();
+      $('#alert_1_1_8').show();
       console.log("show")
   };
   //ここまで
@@ -104,7 +107,7 @@ $(function(){
         }
       break;
       case "notifi-hide":
-        $.cookie('alert_114514', 'closed', { path: '/', expires: 1800 });
+        $.cookie('alert_1_1_8', 'closed', { path: '/', expires: 1800 });
         console.log("cookieにclosedを書き込み")
       break;
     }
