@@ -70,19 +70,21 @@ $(function(){
   $(document).on("click",".dombutton",function(){
     $(this).removeClass("dombutton");
     let mulbtn = $(this).attr("class");
-    console.log(mulbtn)
     switch(mulbtn){
       case "user-ng-button":
-        let ng_name = $(this).parent().find("span").text();
-        let ng_id = $(this).parent().find("span").attr("title");
-        let ng_user_name = window.prompt("NGユーザーに追加するユーザーの名前を入力してください", ng_name);
-        if(ng_user_name != "" || ng_user_name != "null"){
-          let ng_user_id = window.prompt("NGユーザーに追加するIDを入力してください", ng_id);
-          if(ng_user_id != "" || ng_user_id != "null" || ng_user_id.length == 40){
+        let ng_user_name = $(this).parent().find("span").text();
+        ng_user_name = prompt("NGユーザーに追加するユーザーの名前",ng_user_name);
+
+        if(ng_user_name !== null){
+          let ng_user_id = $(this).parent().find("span").attr("title");
+          ng_user_id = prompt("NGユーザーに追加するユーザーのID",ng_user_id);
+
+          if(ng_user_id !== null || ng_user_id.length === 40){
             let confirm_var = confirm(`名前:${ng_user_name}\nユーザーID:${ng_user_id}\nをNGユーザーに追加しますか？`);
-            if(confirm_var == true){
-              if(ng_user_name == null || ng_user_id == null){
-                  alert("nullnullしゅる〜〜〜〜wwww");
+
+            if(confirm_var === true){
+              if(ng_user_name === null || ng_user_id === null){
+                alert("nullが発生してるのでおかしいです。開発者までご連絡を。")
               }else{
                 chrome.runtime.sendMessage({method: "setItem",key:ng_user_name ,value:ng_user_id });
                 $(`[id^=${ng_user_id}]`).remove();
@@ -92,14 +94,16 @@ $(function(){
                 })
               }
             }
+          }else{
+            //ユーザーIDが規定の40文字ではない、またはnullの場合
+            alert("ユーザーIDが空または不正です")
           }
-        //ユーザー名が空の場合
         }else{
-          alert("ユーザー名が空です");
+          //名前が空またはnullの場合
+          alert("名前が空または不正です");
         }
       break;
       case "notifi-hide":
-        console.log("閉じたよ");
         $.cookie('alert_114514', 'closed', { path: '/', expires: 1800 });
         console.log("cookieにclosedを書き込み")
       break;

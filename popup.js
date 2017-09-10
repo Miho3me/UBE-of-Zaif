@@ -29,6 +29,7 @@ $(function(){
         break;
       case "add-btn":
         $("#add-mode").show();
+        break;
     }
   }),
   //NGリスト横の削除ボタンで発動
