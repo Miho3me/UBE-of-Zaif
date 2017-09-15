@@ -6,16 +6,16 @@ let processing = "off";
 let notification_audio = new Audio("https://github.com/Miho3me/audio-library/raw/master/zaif_notification.wav");
 
 $(function(){
-  if($.cookie("alert_114514") != undefined){
-    $.removeCookie("alert_114514");
+  if($.cookie("alert_1_1_8") != undefined){
+    $.removeCookie("alert_1_1_8");
   }
   //アップデート通知
-  $("#header_message").append(`<div id="alert_1_1_8" class="alert alert-success alert-dismissible unread-message" role="alert" style=""><button type="button" class="close notifi-hide" data-dismiss="alert" aria-label="Close"><span update-notification="true" class="notifi-hide dombutton">×</span></button><div class="pc-alert">バグ修正のため、1.1.8をリリースしました。あと、<a href="https://chrome.google.com/webstore/detail/zaif-tweaker/ojmmmmbolgbdhhkkdgdclgbekopjlgec" target="_blank">Zaif-Tweakerをリリース</a>しました。(クリックで飛べます)<br>現在はチャット丸ごと非表示・時価総額非表示機能のみですがこれから機能が充実していく予定です。ご期待ください。</div></div>`);
-  if($.cookie('alert_1_1_8') === 'closed'){
-      $('#alert_1_1_8').hide();
+  $("#header_message").append(`<div id="alert_1_1_9" class="alert alert-success alert-dismissible unread-message" role="alert" style=""><button type="button" class="close notifi-hide" data-dismiss="alert" aria-label="Close"><span update-notification="true" class="notifi-hide dombutton">×</span></button><div class="pc-alert">Notification by <a href="https://chrome.google.com/webstore/detail/zaif-user-blocker/kgdejpebaddomogpemcjnajnmiedjpcf" target="_blank">User-Blocker</a>&<a href="https://chrome.google.com/webstore/detail/zaif-tweaker/ojmmmmbolgbdhhkkdgdclgbekopjlgec" target="_blank">Zaif-Tweaker</a><br>セキュリティー向上のためアップデートを行いました。→<a href='https://github.com/Miho3me/UBE-of-Zaif/wiki/Chrome-Extensionの権限について' target='_blank'>コチラからアップデート内容についてのページを開けます</a></div></div>`);
+  if($.cookie('alert_1_1_9') === 'closed'){
+      $('#alert_1_1_9').hide();
       console.log("hide")
   } else {
-      $('#alert_1_1_8').show();
+      $('#alert_1_1_9').show();
       console.log("show")
   };
   //ここまで
@@ -72,6 +72,12 @@ $(function(){
   }),
   $(document).on("click",".dombutton",function(){
     $(this).removeClass("dombutton");
+    if($(this).hasClass("color_set").length){
+      $(this).removeClass("color_set");
+      let color_set = "on"
+    }else{
+      let color_set = "off"
+    }
     let mulbtn = $(this).attr("class");
     switch(mulbtn){
       case "user-ng-button":
@@ -105,9 +111,13 @@ $(function(){
           //名前が空またはnullの場合
           alert("名前が空または不正です");
         }
+      if(color_set == "on"){
+        $(this).addClass("color_set");
+      }
+      $(this).addClass("dombutton");
       break;
       case "notifi-hide":
-        $.cookie('alert_1_1_8', 'closed', { path: '/', expires: 1800 });
+        $.cookie('alert_1_1_9', 'closed', { path: '/', expires: 1800 });
         console.log("cookieにclosedを書き込み")
       break;
     }

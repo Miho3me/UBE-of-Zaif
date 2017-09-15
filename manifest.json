@@ -2,7 +2,7 @@
  "manifest_version": 2,
  "name": "Zaif user blocker",
  "description": "Zaifチャットの特定のIDを指定して投稿を非表示にする拡張機能",
- "version": "1.1.8",
+ "version": "1.1.9",
  "icons":{
    "16":"icons/icon16.png",
    "48":"icons/icon48.png"
@@ -17,7 +17,7 @@
  },
  "content_scripts": [
  {
-    "matches": ["https://zaif.jp/*"],
+    "matches": ["https://zaif.jp/trade*","https://zaif.jp/token*","https://zaif.jp/event/mijinmagatama/trade/*"],
     "css": ["css.css"],
     "js": ["jquery-3.2.1.min.js","jquery.cookie.js","script.js","popup.js"],
     "run_at": "document_end"
