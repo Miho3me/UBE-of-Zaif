@@ -36,7 +36,7 @@ $(function(){
           console.log("読み込み完了");
           count++;
           processing = "on";
-          $("#cc_area .media-heading").append("<button class='user-ng-button dombutton'>NG</button>");
+          $("#cc_area .media-heading").append("<button class='user-ng-button'>NG</button>");
           processing = "off";
           break;
 
@@ -52,7 +52,7 @@ $(function(){
           })
           if(!($("#cc_area .media-heading").last().find(".user-ng-button").length)){
             processing = "on";
-            $("#cc_area .media-heading").last().append("<button class='user-ng-button dombutton'>NG</button>");
+            $("#cc_area .media-heading").last().append("<button class='user-ng-button'>NG</button>");
             processing = "off";
             chrome.storage.local.get(["notification"],function(value){
               if(value.notification == "on"){
@@ -70,8 +70,7 @@ $(function(){
       }
     }
   }),
-  $(document).on("click",".dombutton",function(){
-    $(this).removeClass("dombutton");
+  $(document).on("click","button",function(){
     if($(this).hasClass("color_set").length){
       $(this).removeClass("color_set");
       let color_set = "on"
@@ -81,6 +80,7 @@ $(function(){
     let mulbtn = $(this).attr("class");
     switch(mulbtn){
       case "user-ng-button":
+      $(".list-group").off("click");
         let ng_user_name = $(this).parent().find("span").text();
         ng_user_name = prompt("NGユーザーに追加するユーザーの名前",ng_user_name);
 
@@ -114,12 +114,12 @@ $(function(){
       if(color_set == "on"){
         $(this).addClass("color_set");
       }
-      $(this).addClass("dombutton");
       break;
       case "notifi-hide":
         $.cookie('alert_1_1_9', 'closed', { path: '/', expires: 1800 });
         console.log("cookieにclosedを書き込み")
       break;
     }
+    console.log("TETETETETET")
   })
 })

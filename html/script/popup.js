@@ -15,7 +15,7 @@ $(function(){
       case "edit-btn":
         //NGリストを描画
         for(key in localStorage){
-          $("#edit-mode").append(`<div id=${key}>名前:${key}\nユーザーID:${localStorage[key]}<button class=delete-button>削除</button></div>`);
+          $("#edit-mode").append(`<div id=${key} class="border">名前:${key} <button class=delete-button>削除</button><br>ユーザーID:${localStorage[key]}</div>`);
           counter++;
         }
         $("#edtmd").show();

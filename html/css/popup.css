@@ -5,3 +5,9 @@ body{
 #sub-title,#edtmd,#add-mode,#delete-mode,#update-history,#popup-message,#not-found{
   display: none;
 }
+
+.border{
+    border-top: solid 1px;
+    border-bottom: solid 1px;
+    margin-bottom: -1px;
+}
