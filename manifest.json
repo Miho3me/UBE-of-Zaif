@@ -13,18 +13,21 @@
      "38":"icons/icon38.png"
    },
    "default_title": "Zaif user blocker",
-   "default_popup": "popup.html"
+   "default_popup": "html/popup.html"
  },
  "content_scripts": [
  {
     "matches": ["https://zaif.jp/trade*","https://zaif.jp/token*","https://zaif.jp/event/mijinmagatama/trade/*"],
-    "css": ["css.css"],
-    "js": ["jquery-3.2.1.min.js","jquery.cookie.js","script.js","popup.js"],
+    "js": [
+      "html/script/jquery-3.2.1.min.js",
+      "html/script/jquery.cookie.js",
+      "html/script/content.js",
+      "html/script/popup.js"],
     "run_at": "document_end"
  }
  ],
  "background": {
-   "scripts":["background.js"]
+   "scripts":["html/script/background.js"]
  },
  "permissions":[
    "storage"
