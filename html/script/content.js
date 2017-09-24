@@ -6,16 +6,24 @@ let processing = "off";
 let notification_audio = new Audio("https://github.com/Miho3me/audio-library/raw/master/zaif_notification.wav");
 
 $(function(){
-  if($.cookie("alert_1_1_8") != undefined){
-    $.removeCookie("alert_1_1_8");
+  if($.cookie("alert_1_1_9") != undefined){
+    $.removeCookie("alert_1_1_9");
   }
   //アップデート通知
-  $("#header_message").append(`<div id="alert_1_1_9" class="alert alert-success alert-dismissible unread-message" role="alert" style=""><button type="button" class="close notifi-hide" data-dismiss="alert" aria-label="Close"><span update-notification="true" class="notifi-hide dombutton">×</span></button><div class="pc-alert">Notification by <a href="https://chrome.google.com/webstore/detail/zaif-user-blocker/kgdejpebaddomogpemcjnajnmiedjpcf" target="_blank">User-Blocker</a>&<a href="https://chrome.google.com/webstore/detail/zaif-tweaker/ojmmmmbolgbdhhkkdgdclgbekopjlgec" target="_blank">Zaif-Tweaker</a><br>セキュリティー向上のためアップデートを行いました。→<a href='https://github.com/Miho3me/UBE-of-Zaif/wiki/Chrome-Extensionの権限について' target='_blank'>コチラからアップデート内容についてのページを開けます</a></div></div>`);
-  if($.cookie('alert_1_1_9') === 'closed'){
-      $('#alert_1_1_9').hide();
+  $("#header_message").append(`<div id="alert_1_2_0" class="alert alert-success alert-dismissible unread-message" role="alert" style="">
+    <button type="button" class="close notifi-hide" data-dismiss="alert" aria-label="Close">
+      <span update-notification="true" class="notifi-hide dombutton">×</span>
+    </button>
+    <div class="pc-alert">
+      Notification by <a href="https://chrome.google.com/webstore/detail/zaif-user-blocker/kgdejpebaddomogpemcjnajnmiedjpcf" target="_blank">User-Blocker</a>&<a href="https://chrome.google.com/webstore/detail/zaif-tweaker/ojmmmmbolgbdhhkkdgdclgbekopjlgec" target="_blank">Zaif-Tweaker</a>
+      <br>それぞれアップデートを行いましたので、各拡張機能のupdate履歴から変更点をご確認ください。
+    </div>
+  </div>`);
+  if($.cookie('alert_1_2_0') === 'closed'){
+      $('#alert_1_2_0').hide();
       console.log("hide")
   } else {
-      $('#alert_1_1_9').show();
+      $('#alert_1_2_0').show();
       console.log("show")
   };
   //ここまで
@@ -116,7 +124,7 @@ $(function(){
       }
       break;
       case "notifi-hide":
-        $.cookie('alert_1_1_9', 'closed', { path: '/', expires: 1800 });
+        $.cookie('alert_1_2_0', 'closed', { path: '/', expires: 1800 });
         console.log("cookieにclosedを書き込み")
       break;
     }
