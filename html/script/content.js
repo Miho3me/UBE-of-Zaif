@@ -128,6 +128,5 @@ $(function(){
         console.log("cookieにclosedを書き込み")
       break;
     }
-    console.log("TETETETETET")
   })
 })
