@@ -1,47 +1,53 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="./css/popup.css">
-    <script src="./script/jquery-3.2.1.min.js"></script>
-  </head>
-  <body>
-    <div id="contents-list">
-      <div class="title"><h2>Zaif user blocker v1.2.0</h2></div>
-      <div id="multi-btn">
-        <button class="menu-button" id="edit-btn">編集モード</button>
-        <button class="menu-button" id="add-btn">追加機能</button>
-        <button class="menu-button" id="his-btn">update履歴</button>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="./css/popup.css">
+  <script src="./script/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+  <h1>Zaif User Blocker v1.2.1</h1>
+  <div id="main">
+    <div id="menu-button">
+      <button id="NG-List">NGリスト</button>
+      <span>(´･_･`)つ<button id="donate">寄付</button></span>
+      <button id="update">update履歴</button>
+    </div>
+    <div id="content">
+      <div id="NG-List-tab"></div>
+      <div id="donate-tab">
+        <div><h3>この拡張機能を頑張って作ったんですゥ〜〜〜〜</h3>
+          <h4>寄付おねげぇ〜しますぅ〜〜〜〜</h4>
+          <h5>本当に開発のモチベーションになるんです(´･_･`)</h5>
+          <ul>
+            <li>MONA：MQ8NER8UuySzgMJovVi5VhDRTM6p3833zN</li>
+            <li>Tipmonaで投げ銭：<a href="https://twitter.com/intent/tweet?text=@tipmona tip @ba_ison 3.9 Mona どんどこわっしょーい！" target="_blank">別タブで開きます</a>
+          </ul>
+          <br>
+          <div>誰がﾃﾞｰ！ﾀﾞﾃﾞｶﾞ開発ｼﾃﾞﾓ！ｵﾝﾅｼﾞﾔｵﾝﾅｼﾞﾔｵﾓﾃﾞｪｰ！ﾝｧｯ↑ﾊｯﾊｯﾊｯﾊｰｗｗｗｗｗｗｱ゛ﾝ！！このZaifﾝﾌﾝﾌﾝｯﾊ ｱｱｱｱｱｱｱｱｱ↑↑↑ｱｧﾝ！！！！！！ｱｩｯｱｩｵｩｳｱ゛ｱｱｱｱｱｱｱｱｱｱｱｱｱーーーｩｱﾝ！ｺﾉｻﾞｲﾌｩｧｩ……ｱ゛ー！Zaifチャットを… ｳｯ…ｶﾞｴﾀﾞｲ！質の問題はぁ…ｸﾞｽﾞｯ…我が取引所のみﾝﾄﾞｩｯﾊｯﾊｯﾊｯﾊｯﾊｱｱｱｱｧｧ↑我が取引所のみﾝｩｯﾊｰ↑ｸﾞｽﾞｯ我が取引所のみな らずぅう！！ｻﾞｲﾌﾐﾝ…Zaifチャット民の問題やないですかぁ…命がけでｯﾍｯﾍｴｴｪｴｪｴｴｲ↑↑↑↑ｱ゛ｧｱﾝ！！！ｱﾀﾞﾀﾞﾆﾊﾜｶﾗﾅｲﾃﾞｼｮｳﾈ ｴ</div>
+        </div>
       </div>
-      <div id="edtmd">
-        <div><h2>現在のNGユーザーリスト</h2></div>
-        <div id="not-found">NGユーザーがいません</div>
-        <div id="edit-mode"></div>
-        <div id="popup-message">削除後はリロードしないと反映されません。</div>
-      </div>
-      <div id="add-mode">
-        <div id="add-sub-title"><h1>追加機能各種いじるメニュー</h1></div>
-        <ul>
-          <li><label><input type="checkbox" class="chat-notification">新着チャット通知を音で鳴らす</label></li>
+      <div id="update-tab">
+        <ul><h1>v1.2.1について</h1>
+          <li>17/10/14リリース</li>
+          <li>ソースコードを一新</li>
+          <li>チャット新着通知(追加機能)を削除。
+          <br>また、追加機能については<a href="https://chrome.google.com/webstore/detail/zaif-tweaker/ojmmmmbolgbdhhkkdgdclgbekopjlgec" target="_blank">専用の拡張機能</a>がありますので、そちらをご使用ください。</li>
         </ul>
-      </div>
-      <div id="update-history">
         <ul><h1>v1.2.0について</h1>
           <li>17/09/21リリース</li>
           <li>ディレクトリの構造を変更</li>
           <li>追加機能をon/off切り替え時に文字をクリックしても反応するように修正</li>
         </ul>
-        <ul><h1>v1.1.9について</h1>
-          <li>17/09/15リリース</li>
-          <li>manifest.jsonの権限設定を変更し、セキュリティーの向上を図りました。</li>
-          <li><a href="https://github.com/Miho3me/UBE-of-Zaif/wiki/Chrome-Extensionの権限について" target="_blank">アップデート内容についてはこちら</a></li>
-        </ul>
-        <ul><h2>次回実装(予定)</h2>
-          <li>NGボタンを押した際にいいねモーダルが出てきてしまう問題を修正(予定(大変厳しい))</li>
-          <li>いいねでボタンが消えてしまう問題を修正(多分)</li>
-        </ul>
         <div>使い方などは<a href="https://github.com/Miho3me/UBE-of-Zaif/wiki" target="_blank">こちら</a>をご覧ください</div>
+        <br>
+        <br>
+        <br>P.S.
+        <br>モナコイン100円突破おめでとうございます(´･_･`)
+        <br>はぁポジっとけばよかった。。。
       </div>
-    <script src="./script/popup.js"></script>
-  </body>
+    </div>
+  </div>
+  <script src="./script/popup.js"></script>
+</body>
 </html>

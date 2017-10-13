@@ -2,12 +2,18 @@ body{
   width:450px;
   overflow-x: hidden;
 }
-#sub-title,#edtmd,#add-mode,#delete-mode,#update-history,#popup-message,#not-found{
-  display: none;
+#donate-tab li{
+  color:blue;
 }
-
 .border{
     border-top: solid 1px;
     border-bottom: solid 1px;
     margin-bottom: -1px;
+}
+#NG-List-tab,#donate-tab,#update-tab{
+  display:none;
+}
+#menu-button span{
+  width: auto;
+  float: right;
 }

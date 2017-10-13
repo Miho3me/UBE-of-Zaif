@@ -1,34 +1,25 @@
-let counter = 0;
-
 $(function(){
-  //通知がonなら予めcheckを入れる
-  chrome.storage.local.get(["notification"],function(value){
-    if(value.notification == "on"){
-      $(".chat-notification").prop("checked",true);
-    }
-  }),
-  //switch文で成形
-  $(".menu-button").click(function(){
-    $("#multi-btn").hide();
+  $("#menu-button button").click(function(){
+    $("#menu-button").hide();
     let click_id = $(this).attr("id");
     switch (click_id){
-      case "edit-btn":
+      case "NG-List":
         //NGリストを描画
         for(key in localStorage){
-          $("#edit-mode").append(`<div id=${key} class="border">名前:${key} <button class=delete-button>削除</button><br>ユーザーID:${localStorage[key]}</div>`);
-          counter++;
+          $("#NG-List-tab").append(`<div id=${key} class="border">名前:${key} <button class=delete-button>削除</button><br>ユーザーID:${localStorage[key]}</div>`);
         }
-        $("#edtmd").show();
+        $("#NG-List-tab").show();
         if(localStorage.length == 0){
           //NGユーザーはいません
-          $("#not-found").show();
+          $("#NG-List-tab").append("<div>NGユーザーはいません</div>")
         }
         break;
-      case "his-btn":
-        $("#update-history").show();
+      case "donate":
+        $("#donate-tab").show();
         break;
-      case "add-btn":
-        $("#add-mode").show();
+      case "update":
+        $("#update-tab").show();
+      default:
         break;
     }
   }),
@@ -37,18 +28,6 @@ $(function(){
     let remove_us = $(this).parent().attr("id");
     localStorage.removeItem(`${remove_us}`);
     $(this).parent().remove();
-    $("#popup-message").fadeIn();
-  }),
-  //各種設定
-  $(document).ready(function(){
-    $(".chat-notification").click(function(){
-      if($(this).is(":checked")){
-        chrome.storage.local.set({'notification': "on"},function(){
-        })
-      }else{
-        chrome.storage.local.set({'notification': "off"},function(){
-        })
-      }
-    })
+    $("#NG-List-tab").append("<div>削除後はページ更新を行わないと削除結果が反映されません</div>");
   })
 })
