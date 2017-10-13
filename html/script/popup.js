@@ -28,6 +28,6 @@ $(function(){
     let remove_us = $(this).parent().attr("id");
     localStorage.removeItem(`${remove_us}`);
     $(this).parent().remove();
-    $("#NG-List-tab").append("<div>削除後はページ更新を行わないと削除結果が反映されません</div>");
+    $("#NG-List-tab").append("<div>削除後はページ更新を行ってください</div>");
   })
 })
