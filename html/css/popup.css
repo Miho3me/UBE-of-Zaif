@@ -13,7 +13,13 @@ body{
 #NG-List-tab,#donate-tab,#update-tab{
   display:none;
 }
-#menu-button span{
+#menu-button span,.twitter{
   width: auto;
   float: right;
+}
+
+.twitter{
+  background-color: #00aced;
+  color:white;
+  text-decoration	:none;
 }

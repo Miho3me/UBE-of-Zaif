@@ -1,4 +1,4 @@
-let count,developer_id,userid,username,message,procesing,click
+let count,developer_id,developer_last,userid,username,message,procesing,click
 
 count = 1
 processing = "off"
@@ -24,10 +24,7 @@ $(function(){
           count++;
           break;
       }
-      processing = "on"
-      userid = $("#cc_area .media-heading").last().find("span").attr("title")
-      developer(userid)
-      processing = "off"
+      developer()
     }
   }),
   $(document).on("click","button",function(){

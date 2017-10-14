@@ -50,10 +50,13 @@ function NG_INPUT(username,userid){
 //========================================NG関連=============================================//
 //===開発者===//
 
-function developer(userid){
-  if(userid === developer_id){
+function developer(){
+  processing = "on"
+  userid = $("#cc_area .media-heading").last().find("span").attr("title")
+  if(userid === developer_id && !($(`[id^=${developer_id}]`).last().hasClass("developer"))){
     $(`[id^=${developer_id}]`).last().addClass("developer own");
     $(`[id^=${developer_id}]`).last().find(".nickname").append("<span style='color:red'>[NG開発者]</span>")
   }
+  processing = "off"
 }
 //===開発者===//
