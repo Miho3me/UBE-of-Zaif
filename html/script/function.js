@@ -19,12 +19,12 @@ function ALL_HIDE(){
   })
 }
 
-function USER_HIDE(userid){
-  chrome.runtime.sendMessage({method: "getallItem"} ,function(response){
+function USER_HIDE(){
+  chrome.runtime.sendMessage({method:"getallItem"},function(response){
     for(key in response.data){
-      if(userid == response.data[key]){
-        message = $(`#cc_area [id^=${userid}`).find(".content").text();
-        $(`#cc_area [id^=${userid}]`).remove();
+      if($(`[id^=${response.data[key]}]`).length){
+        let message = $(`[id^=${response.data[key]}]`).find(".content").text()
+        $(`[id^=${response.data[key]}]`).remove();
         console.log(`NG対象ユーザー:${key} ID:${response.data[key]}が\n「${message}」と発言しました`);
       }
     }

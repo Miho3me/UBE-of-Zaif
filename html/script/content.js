@@ -15,7 +15,7 @@ $(function(){
           break;
         case 81:
           userid = $("#cc_area .media-heading").last().find("span").attr("title")
-          USER_HIDE(userid);
+          USER_HIDE();
           if(!($("#cc_area .media-heading").last().find(".ng-button").length)){
             ADD_BUTTON("last");
           }
