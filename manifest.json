@@ -1,8 +1,8 @@
 {
  "manifest_version": 2,
- "name": "Zaif user blocker",
- "description": "Zaifチャットの特定の個人を指定して投稿を非表示にする拡張機能",
- "version": "1.2.4",
+ "name": "まだZaifチャットで消耗してるの?",
+ "description": "ZaifチャットにNG機能を追加する拡張機能です。改名しまして、旧名はZaif User Blockerでした。",
+ "version": "1.2.5",
  "icons":{
    "16":"icons/icon16.png",
    "48":"icons/icon48.png"
@@ -12,24 +12,23 @@
      "19":"icons/icon19.png",
      "38":"icons/icon38.png"
    },
-   "default_title": "Zaif user blocker",
-   "default_popup": "html/popup.html"
+   "default_title": "まだZaifチャットで消耗してるの？",
+   "default_popup": "popup.html"
  },
  "content_scripts": [
  {
     "matches": ["https://zaif.jp/trade*","https://zaif.jp/token*","https://zaif.jp/event/mijinmagatama/trade/*"],
     "js": [
-      "html/script/jquery-3.2.1.min.js",
-      "html/script/jquery.cookie.js",
-      "html/script/function.js",
-      "html/script/content.js",
-      "html/script/notification.js",
-      "html/script/popup.js"],
+      "scripts/jquery-3.2.1.min.js",
+      "scripts/jquery.cookie.js",
+      "scripts/content.js",
+      "scripts/notification.js"
+    ],
     "run_at": "document_end"
  }
  ],
  "background": {
-   "scripts":["html/script/background.js"]
+   "scripts":["scripts/background.js"]
  },
  "permissions":[
    "storage"
