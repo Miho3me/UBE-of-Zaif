@@ -8,9 +8,11 @@ $(function(){
   let observer = new MutationObserver(function(e){
     //初期設定が終わった場合
     if(initial_setting == "true"){
+
       if(e[0].removedNodes.length == 0){
         $("#cc_area .media-heading").last().append("<button class='ng_button'>NG</button>");
         chrome.runtime.sendMessage({method:"getallItem"},function(response){
+
           for(key in response.data){
             if($(`[id^=${response.data[key]}]`).length){
               let message = $(`[id^=${response.data[key]}]`).find(".content").text()
@@ -29,6 +31,7 @@ $(function(){
       $("#cc_area .media-heading").append('<button class="ng_button">NG</button>');
       chrome.runtime.sendMessage({method:"getallItem"} ,function(response){
         $("#cc_area .media-heading").last().find("span").attr("title")
+        
         for(key in response.data){
           if($(`[id^=${response.data[key]}]`).length){
             $(`[id^=${response.data[key]}]`).remove();
